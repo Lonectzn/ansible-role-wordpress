@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  tasks:
+    - include: prepare.yml
+
+- hosts: localhost
+  roles:
+    - ansible-role-wordpress

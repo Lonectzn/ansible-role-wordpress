@@ -9,42 +9,26 @@
   tags:
     - prepare
 
-- name: make web root writable
-  file: path="{{ wp.web.root }}" mode=0777 recurse=yes
+- name: make wordpress path writable
+  file: path="{{ wp_web_root }}" mode=0777 recurse=yes
   become: true
 
 - name: download wordpress
-  command: wp core download --path="{{ wp.web.root }}"
+  command: wp core download --path="{{ wp_web_root }}"
   args:
-    creates: "{{ wp.web.root }}/wp-admin"
+    creates: "{{ wp_web_root }}/wp-admin"
   tags:
     - prepare
 
-- name: configure wordpress
-  command: wp core config --path="{{ wp.web.root }}" --dbname={{ wp.db.name }} --dbuser={{ wp.db.user }} --dbpass={{ wp.db.pass }}
+- name: write wp-config.php
+  command: wp core config --path="{{ wp_web_root }}" --dbname="{{ wp_db_name }}" --dbuser="{{ wp_db_user }}" --dbpass="{{ wp_db_pass }}"
   args:
-    creates: "{{ wp.web.root }}/wp-config.php"
+    creates: "{{ wp_web_root }}/wp-config.php"
   tags:
     - configure
 
-- name: set owner to apache
-  file: path="{{ wp.web.root }}" state=directory recurse=yes owner="{{ wp.web.user }}" group="{{ wp.web.group }}"
+- name: set owner of wordpress dir to apache user
+  file: path="{{ wp_web_root }}" state=directory recurse=yes owner="{{ wp_web_user }}" group="{{ wp_web_group }}"
   become: true
   tags:
     - configure
-
-- name: ensure the wordpress database exists
-  mysql_db: name={{ wp.db.name }} state=present login_user={{ wp.db.user }} login_password={{ wp.db.pass }}
-
-- name: check if wordpress is installed
-  shell: wp core is-installed --path="{{ wp.web.root }}"
-  register: is_installed
-  changed_when: no
-  tags:
-    - install
-
-- name: install wordpress
-  command: wp core install --path="{{ wp.web.root }}" --url={{ wp.site.url }} --title={{ wp.site.title }} --admin_user={{ wp.site.user }} --admin_password={{ wp.site.pass }} --admin_email={{ wp.site.email }}
-  when: is_installed.rc == 1
-  tags:
-    - install

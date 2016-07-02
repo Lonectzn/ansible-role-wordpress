@@ -1,21 +1,19 @@
 ---
 # defaults file for wordpress
 
-wp:
-  cli:
-    url: "https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar"
-    path: /usr/local/bin/wp
-  web:
-    root: /var/www/html
-    user: "www-user"
-    group: "www-user"
-  db:
-    name: "wordpress"
-    user: "wordpress"
-    pass: "password"
-  site:
-    url: "localhost"
-    title: "Wordpress Site"
-    user: "admin"
-    pass: "admin"
-    email: "root@localhost.localdomain"
+wp_cli_url: "https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar"
+wp_cli_path: /usr/local/bin/wp
+
+wp_web_root: /var/www/html
+wp_web_user: "www-data"
+wp_web_group: "www-data"
+
+wp_db_name: "wordpress"
+wp_db_user: "wordpress"
+wp_db_pass: "password"
+
+wp_site_url: "localhost"
+wp_site_title: "Wordpress Site"
+wp_site_user: "admin"
+wp_site_pass: "admin"
+wp_site_email: "root@localhost.localdomain"

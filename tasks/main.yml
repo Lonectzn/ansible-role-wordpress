@@ -2,3 +2,9 @@
 
 - include: install-wp-cli.yml
 - include: install-wordpress.yml
+
+- include: create-new-site.yml
+  when: wp_import is not defined
+
+- include: import-existing-site.yml
+  when: wp_import is defined
