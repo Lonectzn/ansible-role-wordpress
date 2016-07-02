@@ -1,0 +1,8 @@
+---
+# Install wp-cli
+
+- name: install wp-cli
+  get_url: url="{{ wp.cli.url }}" dest="{{ wp.cli.path }}" mode=0775
+  become: true
+  tags:
+    - prepare

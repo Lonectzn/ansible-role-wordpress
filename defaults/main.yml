@@ -1,0 +1,21 @@
+---
+# defaults file for wordpress
+
+wp:
+  cli:
+    url: "https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar"
+    path: /usr/local/bin/wp
+  web:
+    root: /var/www/html
+    user: "www-user"
+    group: "www-user"
+  db:
+    name: "wordpress"
+    user: "wordpress"
+    pass: "password"
+  site:
+    url: "localhost"
+    title: "Wordpress Site"
+    user: "admin"
+    pass: "admin"
+    email: "root@localhost.localdomain"

@@ -1,0 +1,11 @@
+---
+
+- block:
+  - name: update wordpress core
+    command: wp core update --path="{{ wp.web.root }}"
+
+  - name: update wordpress plugins
+    command: wp plugin update --all --path="{{ wp.web.root }}"
+  tags:
+    - update
+
