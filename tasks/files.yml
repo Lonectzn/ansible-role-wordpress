@@ -1,7 +1,7 @@
 ---
 
 - name: download wordpress
-  command: wp core download --path="{{ wp_web_root }}"
+  command: wp core download --path="{{ wp_web_root }}" --allow-root
   args:
     creates: "{{ wp_web_root }}/wp-admin"
 
