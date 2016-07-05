@@ -1,0 +1,29 @@
+---
+
+# Verify we can install and that it is not already installed
+
+- name: ensure the wordpress database exists
+  command: mysql --batch --skip-column-names -e "SHOW DATABASES LIKE '{{ wp_db_name }}'" -u "{{ wp_db_user }}" -p{{ wp_db_pass }}
+  register: database_exists
+  changed_when: no
+  failed_when: database_exists.stdout != "{{ wb_db_name }}"
+
+- name: check if wordpress is installed
+  command: wp core is-installed --path="{{ wp_web_root }}"
+  register: is_installed
+  ignore_errors: yes
+  changed_when: no
+
+# If wordpress is not installed yet
+- block:
+
+  # Create a new wordpress instance in the database
+  - name: install new wordpress instance
+    command: wp core install --path="{{ wp_web_root }}" --url="{{ wp_site_url }}" --title="{{ wp_site_title }}" --admin_user="{{ wp_site_user }}" --admin_password="{{ wp_site_pass }}" --admin_email="{{ wp_site_email }}"
+    when: wp_db_import is not set
+
+  # Or import an existing one
+  - name: import existing database
+    mysql_db: name="{{ wp_db_name }}" login_user="{{ wb_db_user }} login_password="{{ wp_db_pass }}" state=import target="{{ wp_db_import }}"
+
+  when: is_installed.rc != 0

@@ -4,16 +4,35 @@
 wp_cli_url: "https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar"
 wp_cli_path: /usr/local/bin/wp
 
+# Apache web root and user
 wp_web_root: /var/www/html
+# Should the wordpress directory be set writable, so automatic updates can occur
+wp_web_writable: "yes"
+# Files will be set to this user and group
 wp_web_user: "www-data"
 wp_web_group: "www-data"
 
+# MySQL compatible database
 wp_db_name: "wordpress"
 wp_db_user: "wordpress"
 wp_db_pass: "password"
 
+# Wordpress configuration settings
 wp_site_url: "localhost"
 wp_site_title: "Wordpress Site"
 wp_site_user: "admin"
 wp_site_pass: "admin"
 wp_site_email: "root@localhost.localdomain"
+#wp_site_default_theme: example
+
+# Plugins to install
+# wp_plugins:
+#   - example
+#   - example2
+#
+# Themes to install
+# wp_themes:
+#   - example
+#   - example2
+#
+#
