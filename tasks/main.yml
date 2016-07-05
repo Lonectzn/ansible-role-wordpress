@@ -1,25 +1,10 @@
 ---
 
 # Install wp-cli (required)
-
 - include: wp-cli.yml
-  tags: prepare
-
 
 # Download or import the files
-
 - include: files.yml
-  tags: download
-
-
-# Configure wp-config.php
-
-- include: configure.yml
-  tags: configure
-  when: wp_web_import is not set
-
 
 # Install Wordpress (updates the database)
-
-- include: install.yml
-  tags: install
+- include: database.yml

@@ -1,6 +1,0 @@
----
-
-- name: write wp-config.php
-  command: wp core config --path="{{ wp_web_root }}" --dbname="{{ wp_db_name }}" --dbuser="{{ wp_db_user }}" --dbpass="{{ wp_db_pass }}"
-  args:
-    creates: "{{ wp_web_root }}/wp-config.php"

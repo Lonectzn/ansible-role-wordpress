@@ -1,8 +1,10 @@
 ---
 - hosts: localhost
+  remote_user: root
   tasks:
     - include: prepare.yml
 
 - hosts: localhost
+  remote_user: root
   roles:
-    - ansible-role-wordpress
+    - { role: ansible-role-wordpress, wp_web_writable: 'no' }
