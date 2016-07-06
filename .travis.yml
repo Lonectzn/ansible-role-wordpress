@@ -1,5 +1,5 @@
 ---
-sudo: required
+sudo: false
 language: python
 python: "2.7"
 cache: pip
@@ -12,6 +12,9 @@ addons:
   apt:
     packages:
       - python-mysqldb
+      - php5
+      - php5-mysql
+      - php5-cli
 
 install:
   # Install Ansible.
@@ -25,7 +28,7 @@ script:
   - "ansible-playbook -i tests/inventory tests/$TEST --syntax-check"
 
   # Run the role/playbook with ansible-playbook.
-  - "ansible-playbook -i tests/inventory tests/$TEST --connection=local --sudo"
+  - "ansible-playbook -i tests/inventory tests/$TEST --connection=local"
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >

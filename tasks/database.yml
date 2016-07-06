@@ -19,8 +19,14 @@
   changed_when: no
   failed_when: database_exists.stdout != "{{ wp_db_name }}"
 
+- name: write wp-config.php
+  command: '{{ wp_cli_path }} core config --path="{{ wp_web_root }}" --dbname="{{ wp_db_name }}" --dbuser="{{ wp_db_user }}" --dbpass="{{ wp_db_pass }}" --allow-root'
+  when: wp_web_import is not defined
+  args:
+    creates: "{{ wp_web_root }}/wp-config.php"
+
 - name: check if wordpress is installed
-  command: wp core is-installed --path="{{ wp_web_root }}" --allow-root
+  command: '{{ wp_cli_path }} core is-installed --path="{{ wp_web_root }}" --allow-root'
   register: is_installed
   ignore_errors: yes
   changed_when: no
@@ -29,7 +35,7 @@
 - block:
 
   - name: install new wordpress instance
-    command: wp core install --path="{{ wp_web_root }}" --url="{{ wp_site_url }}" --title="{{ wp_site_title }}" --admin_user="{{ wp_site_user }}" --admin_password="{{ wp_site_pass }}" --admin_email="{{ wp_site_email }}" --allow-root
+    command: '{{ wp_cli_path }} core install --path="{{ wp_web_root }}" --url="{{ wp_site_url }}" --title="{{ wp_site_title }}" --admin_user="{{ wp_site_user }}" --admin_password="{{ wp_site_pass }}" --admin_email="{{ wp_site_email }}" --allow-root'
     when: wp_db_import is not defined
 
   - name: import existing database

@@ -1,13 +1,5 @@
 ---
 # Install wp-cli
 
-- name: install php
-  package: name={{ item }} state=present
-  with_items:
-    - php5
-    - php5-mysql
-  become: true
-
 - name: install wp-cli
   get_url: url="{{ wp_cli_url }}" dest="{{ wp_cli_path }}" mode=0775
-  become: true

@@ -1,10 +1,4 @@
 ---
 
-- name: prepare a test database
-  mysql_db: name=wordpress state=present
-
-- name: prepare a test db user
-  mysql_user: name=wordpress password=password state=present priv=wordpress.*:ALL
-
 - name: prepare a test web root
-  file: path=/var/www/html state=directory owner=www-data group=www-data recurse=yes mode=0777
+  file: path=/home/travis/html state=directory mode=0777
