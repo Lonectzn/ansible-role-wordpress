@@ -7,5 +7,5 @@
     creates: "{{ wp_web_root }}/wp-admin"
 
 - name: set directory to apache user and writable
-  file: path="{{ wp_web_root }}" state=directory recurse=yes owner="{{ wp_web_user }}" group="{{ wp_web_group }}" mode=0774
+  file: path="{{ wp_web_root }}" state=directory recurse=yes owner="{{ wp_web_user }}" group="{{ wp_web_group }}" mode=0775
   when: wp_web_set_owner == "yes"

@@ -4,9 +4,9 @@
 - name: install php, php-mysql and php-cli
   package: name={{ item }} state=present
   with_items:
-    - {{ wp_php }}
-    - {{ wp_php_mysql }}
-    - {{ wp_php_cli }}
+    - "{{ wp_php }}"
+    - "{{ wp_php_mysql }}"
+    - "{{ wp_php_cli }}"
   when: wp_web_install_php == "yes"
 
 - name: install wp-cli
