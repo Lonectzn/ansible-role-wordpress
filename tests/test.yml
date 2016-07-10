@@ -7,8 +7,9 @@
   roles:
     - { role: ansible-role-wordpress }
   vars:
-    wp_web_writable: 'no'
     wp_cli_path: '{{ ansible_env.HOME }}/wp'
     wp_web_root: '{{ ansible_env.HOME }}/html'
+    wp_web_install_php: "no"
+    wp_web_set_owner: "no"
     wp_db_root_user: 'root'
     wp_db_root_pass: ''

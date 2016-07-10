@@ -1,14 +1,11 @@
 ---
 
-- block:
-
-  - name: download wordpress
-    command: '{{ wp_cli_path }} core download --path="{{ wp_web_root }}" --allow-root'
-    when: wp_web_import is not defined
-    args:
-      creates: "{{ wp_web_root }}/wp-admin"
+- name: download wordpress
+  command: '{{ wp_cli_path }} core download --path="{{ wp_web_root }}" --allow-root'
+  when: wp_web_import is not defined
+  args:
+    creates: "{{ wp_web_root }}/wp-admin"
 
 - name: set directory to apache user and writable
   file: path="{{ wp_web_root }}" state=directory recurse=yes owner="{{ wp_web_user }}" group="{{ wp_web_group }}" mode=0774
-  when: wp_web_writable == "yes"
-  become: true
+  when: wp_web_set_owner == "yes"

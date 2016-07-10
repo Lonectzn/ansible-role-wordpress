@@ -4,13 +4,15 @@
 wp_cli_url: "https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar"
 wp_cli_path: /usr/local/bin/wp
 
-# Apache web root and user
+# Apache web root
 wp_web_root: /var/www/html
+
 # Should the wordpress directory be set writable, so automatic updates can occur
-wp_web_writable: "yes"
-# Files will be set to this user and group
-wp_web_user: "www-data"
-wp_web_group: "www-data"
+wp_web_set_owner: "no"
+
+# Should php, php-mysql and php-cli be installed if missing?
+# May need to disable if running in docker container
+wp_web_install_php: "yes"
 
 # MySQL compatible database
 wp_db_name: "wordpress"

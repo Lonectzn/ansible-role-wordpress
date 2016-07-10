@@ -1,0 +1,11 @@
+---
+# Debian specific OS variables
+#
+# Apache user and group
+wp_web_user: "www-data"
+wp_web_group: "www-data"
+
+# PHP package names
+wp_php: "php5"
+wp_php_mysql: "php5-mysql"
+wp_php_cli: "php5-mysql"

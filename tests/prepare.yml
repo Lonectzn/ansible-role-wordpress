@@ -1,4 +1,4 @@
 ---
 
 - name: prepare a test web root
-  file: path=/home/travis/html state=directory mode=0777
+  file: path=/home/travis/html state=directory mode=0774

@@ -39,9 +39,9 @@ galaxy_info:
   #  - 11.1
   #  - 11.2
   #  - 11.3
-  #- name: Fedora
-  #  versions:
-  #  - all
+  - name: Fedora
+    versions:
+    - all
   #  - 16
   #  - 17
   #  - 18
@@ -74,9 +74,9 @@ galaxy_info:
   #  versions:
   #  - all
   #  - 2012R2
-  #- name: Amazon
-  #  versions:
-  #  - all
+  - name: Amazon
+    versions:
+    - all
   #  - 2013.03
   #  - 2013.09
   #- name: GenericBSD
@@ -103,9 +103,9 @@ galaxy_info:
   #  - 9.1
   #  - 9.2
   #  - 9.3
-  #- name: Ubuntu
-  #  versions:
-  #  - all
+  - name: Ubuntu
+    versions:
+    - all
   #  - lucid
   #  - maverick
   #  - natty

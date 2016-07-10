@@ -1,0 +1,11 @@
+---
+# RedHat specific OS variables
+#
+# Apache user and group
+wp_web_user: "apache"
+wp_web_group: "apache"
+
+# PHP package names
+wp_php: "php"
+wp_php_mysql: "php-mysql"
+wp_php_cli: "php-mysql"
